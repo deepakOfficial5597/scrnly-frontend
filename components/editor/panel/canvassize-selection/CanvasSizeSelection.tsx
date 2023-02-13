@@ -23,7 +23,7 @@ const CanvasSizeSelection = () => {
             {
                 SIZE_CONFIG.map((individual_size,sizeIndex)=>{
                     return (
-                        <div onClick={() => changeSizeSelection(individual_size)}>
+                        <div onClick={() => changeSizeSelection(individual_size)} key={sizeIndex}>
                             <Button title={individual_size} active={selected == individual_size}/>
                         </div>
                     )

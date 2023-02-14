@@ -1,13 +1,15 @@
 import Button from "@/components/base/Button"
 import useEditor from "@/shared/hooks/useEditor"
-import { useState } from "react"
 
 const ImageSizeSelection = () => {
-    const { setMockup } = useEditor()
-    const [selected, setSelected] = useState("SMALL")
+    const { panel, setMockup,setPanel } = useEditor()
 
     const changeSizeSelection = (size:string) => {
-        setSelected(size)
+        setPanel((previousPanel) => {
+            return {
+                ...previousPanel, imageSize: size
+            }
+        })
         setMockup((previousMockup) => {
             const tmpSize = size === "SMALL" ? 25 : (size === "MEDIUM" ? 50 : 75)
             return {
@@ -25,13 +27,13 @@ const ImageSizeSelection = () => {
         <h1 className="mb-2 font-bold text-sm"> Image Size </h1>
         <div className="flex flex-row gap-4">
             <div onClick={() => changeSizeSelection("SMALL")}>
-                <Button title="Small" active={selected == "SMALL"}/>
+                <Button title="Small" active={panel.imageSize == "SMALL"}/>
             </div>
-            <div onClick={() => changeSizeSelection("MEDIIUM")}>
-                <Button title="Medium" active={selected == "MEDIIUM"}/>
+            <div onClick={() => changeSizeSelection("MEDIUM")}>
+                <Button title="Medium" active={panel.imageSize == "MEDIUM"}/>
             </div>
             <div onClick={() => changeSizeSelection("LARGE")}>
-                <Button title="Large" active={selected == "LARGE"} />
+                <Button title="Large" active={panel.imageSize == "LARGE"} />
             </div>
         </div>
     </>

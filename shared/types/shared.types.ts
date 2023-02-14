@@ -9,7 +9,13 @@ export interface Mockup {
     imageUrl: string
 }
 export interface Panel {
-    background: string
+    backgroundType: string, 
+    backgroundValue?: string,
+    branding: boolean,
+    canvasSize: string,
+    imagePosition: string,
+    mockup: string,
+    imageSize: string
 }
 export interface GradientConfig {
     title: string,

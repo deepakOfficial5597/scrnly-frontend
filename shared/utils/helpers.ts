@@ -9,7 +9,7 @@ export function getDefaultMockup():MockupConfig{
     return MOCKUP_CONFIG[0];
 }
 
-export function getDefaultBackground():string{
+export function getDefaultBackgroundType():string{
     return BACKGROUND_CONFIG.GRADIENT;
 }
 
@@ -22,6 +22,9 @@ export function getDefaultBorderRadius():string{
 export function getDefaultBoxShadow():number{
     return 0;
 }
+export function getDefaultImageSize():string{
+    return "SMALL";
+}
 export function getDefaultCanvasSize():string{
     return SIZE_CONFIG[0];
 }
@@ -32,7 +35,7 @@ export function getDefaultImagePositioningStyles():any{
         transform: "translate(-50%,-50%)" 
     }
 }
-
+export function getPositionStyles(value:string){ return {}}
 export function getMockupBorderRadiusStyles(mockupHeader:MockupHeaderTypes,borderRadius:string = "8px"):any{
     if(mockupHeader === MockupHeaderTypes.NO_FRAME)
         return {

@@ -1,21 +1,23 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiOutlineSwitchVertical } from "react-icons/hi"
 import { MOCKUP_CONFIG } from '@/shared/constants/config'
-import { getDefaultMockup } from '@/shared/utils/helpers'
 import useEditor from '@/shared/hooks/useEditor'
 import MockupCard from './MockupCard'
 
 const options = MOCKUP_CONFIG
 const MockupSelector = () => {
 
-    const { setMockup } = useEditor()
-    const [selected, setSelected] = useState(getDefaultMockup().title)
+    const { panel, setPanel, setMockup } = useEditor()
 
     const changeMockupSelection = (value:string) => {
         const selectedMockup = MOCKUP_CONFIG.filter(mockup => mockup.title == value)
         if(selectedMockup.length){
-            setSelected(selectedMockup[0].title)
+            setPanel((previousPanel) => {
+                return {
+                    ...previousPanel, mockup: selectedMockup[0].title
+                }
+            })
             setMockup((previousMockup) => {
                 return {
                 ...previousMockup,
@@ -25,10 +27,10 @@ const MockupSelector = () => {
     }
 
     return (
-        <Listbox value={selected} onChange={changeMockupSelection}>
+        <Listbox value={panel.mockup} onChange={changeMockupSelection}>
             <div className="relative w-full h-full">
                 <Listbox.Button className="flex flex-row justify-between px-2 py-2 bg-background-primary rounded-md border border-border-light focus:border-primary-default hover:border-primary-default hover:cursor-pointer" as="div">
-                    <span className="text-sm">{selected}</span>
+                    <span className="text-sm">{panel.mockup}</span>
                     <span><HiOutlineSwitchVertical className="h-5 w-5 text-text-customgray" aria-hidden="true" /></span>
                 </Listbox.Button>
                 <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0" >

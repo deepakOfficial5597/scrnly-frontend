@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiCheckCircle } from "react-icons/hi"
 import { BACKGROUND_CONFIG, GRADIENT_CONFIG } from '@/shared/constants/config'
@@ -10,35 +10,34 @@ const options = GRADIENT_CONFIG
 const GradientSelector = ({active = false}:GradientSelectorProps) => {
 
     const { canvas, setCanvas, panel, setPanel } = useEditor()
-    const [selected, setSelected] = useState("")
 
     const changeGradientSelection = (value:string) => {
         const selectedGradient = GRADIENT_CONFIG.filter(gradient => gradient.title == value)
         if(selectedGradient.length){
-            setSelected(selectedGradient[0].title)
             setCanvas((previousCanvas) => {
-                console.log({
-                    ...previousCanvas, styles: { ...previousCanvas.styles, background: selectedGradient[0].gradient }
-                })
                 return {
                 ...previousCanvas, styles: { ...previousCanvas.styles, background: selectedGradient[0].gradient }
             }})
             setPanel((previousPanel) => {
                 return {
-                    ...previousPanel, background: BACKGROUND_CONFIG.GRADIENT
+                    ...previousPanel, backgroundType: BACKGROUND_CONFIG.GRADIENT, backgroundValue: selectedGradient[0].title
                 }
             })
         }
     }
 
     const reInitializeState = () => {
-        if(panel.background === BACKGROUND_CONFIG.GRADIENT) return
-        setSelected("")
+        if(panel.backgroundType === BACKGROUND_CONFIG.GRADIENT) return
+        setPanel((previousPanel) => {
+            return {
+                ...previousPanel, backgroundValue: ""
+            }
+        })
     }
     return (
-        <Listbox value={selected} onChange={changeGradientSelection}>
+        <Listbox value={panel.backgroundType} onChange={changeGradientSelection}>
             <div className="relative w-full h-full">
-                <Listbox.Button className="relative h-full w-full hover:border-2 hover:border-primary-default rounded-md" as="div" style={{background: panel.background === BACKGROUND_CONFIG.GRADIENT ? canvas?.styles?.background : getDefaultGradient().gradient }} onClick={ reInitializeState }>
+                <Listbox.Button className="relative h-full w-full hover:border-2 hover:border-primary-default rounded-md" as="div" style={{background: panel.backgroundType === BACKGROUND_CONFIG.GRADIENT ? canvas?.styles?.background : getDefaultGradient().gradient }} onClick={ reInitializeState }>
                     {
                         active && (
                            <span className="absolute top-1 left-1">

@@ -1,10 +1,11 @@
 import useEditor from "@/shared/hooks/useEditor"
+import BrandingBanner from "./layout/BrandingBanner"
 import EditorHeader from "./layout/EditorHeader"
 import EditorPanel from "./layout/EditorPanel"
 import EditorMockup from "./mockup/EditorMockup"
 
 const EditorLayout = () => {
-    const { canvas, mockup } = useEditor()
+    const { canvas, mockup, panel } = useEditor()
     return (
         <div className="h-screen w-screen flex flex-col">
             <EditorHeader />
@@ -14,9 +15,12 @@ const EditorLayout = () => {
                         <div className={`absolute ${canvas.classNames}`} style={mockup.styles}>
                             <EditorMockup />
                         </div>
+                        {
+                            panel.branding && <BrandingBanner />
+                        }
                     </div>
                 </div>
-                <div className="w-[500px] bg-background-primary rounded-md">
+                <div className="w-[450px] bg-background-primary rounded-md">
                     <EditorPanel />
                 </div>
             </main>

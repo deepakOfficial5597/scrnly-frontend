@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiOutlineSwitchVertical } from "react-icons/hi"
 import { IMAGE_POSITION_CONFIG } from '@/shared/constants/config'
-import { getPositionStyles } from '@/shared/utils/helpers'
+import { getPositionStyles, removeProperty } from '@/shared/utils/helpers'
 import useEditor from '@/shared/hooks/useEditor'
 import ImagePositionCard from './ImagePositionCard'
 
@@ -18,9 +18,17 @@ const ImagePositionSelector = () => {
             }
         })
         setMockup((previousMockup) => {
+            let styles = previousMockup.styles
+            styles = removeProperty(styles, "top");
+            styles = removeProperty(styles, "right");
+            styles = removeProperty(styles, "bottom");
+            styles = removeProperty(styles, "left");
             return {
             ...previousMockup,
-            ...getPositionStyles(value)
+            styles:{
+                ...styles,
+                ...getPositionStyles(value)
+            }
         }})
     }
 

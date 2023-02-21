@@ -4,6 +4,7 @@ import { HiOutlineSwitchVertical } from "react-icons/hi"
 import { MOCKUP_CONFIG } from '@/shared/constants/config'
 import useEditor from '@/shared/hooks/useEditor'
 import MockupCard from './MockupCard'
+import { getMockupBorderRadiusStyles } from '@/shared/utils/helpers'
 
 const options = MOCKUP_CONFIG
 const MockupSelector = () => {
@@ -21,7 +22,11 @@ const MockupSelector = () => {
             setMockup((previousMockup) => {
                 return {
                 ...previousMockup,
-                type: selectedMockup[0].type
+                type: selectedMockup[0].type,
+                styles: {
+                    ...previousMockup.styles,
+                    ...getMockupBorderRadiusStyles(selectedMockup[0].type,"8px")
+                }
             }})
         }
     }

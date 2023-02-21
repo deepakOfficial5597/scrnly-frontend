@@ -1,6 +1,6 @@
 import EditorState from "../types/editor.state"
 import { Canvas, Mockup, MockupHeaderTypes, Panel } from "../types/shared.types"
-import { getCanvasSizeStyles, getDefaultBackgroundType, getDefaultBoxShadow, getDefaultCanvasSize, getDefaultGradient, getDefaultImagePosition, getDefaultImagePositioningStyles, getDefaultImageSize, getDefaultMockup } from "../utils/helpers"
+import { getCanvasSizeStyles, getDefaultBackgroundType, getDefaultBoxShadow, getDefaultCanvasSize, getDefaultGradient, getDefaultImagePosition, getDefaultImageSize, getDefaultMockup, getPositionStyles } from "../utils/helpers"
 import { SHADOW_CONFIG } from "./config"
 
 export const CANVAS_INITIAL_STATE:Canvas = {
@@ -14,8 +14,11 @@ export const MOCKUP_INITIAL_STATE:Mockup = {
     styles: {
         height: "50%",
         width: "50%",
-        borderRadius: "8px",
-        ...getDefaultImagePositioningStyles()
+        borderTopLeftRadius: "8px",
+        borderTopRightRadius: "8px",
+        borderBottomLeftRadius: "8px",
+        borderBottomRightRadius: "8px",
+        ...getPositionStyles(getDefaultImagePosition())
     },
     classNames:SHADOW_CONFIG[getDefaultBoxShadow()],
     type: MockupHeaderTypes.NO_FRAME,

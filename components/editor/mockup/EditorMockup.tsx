@@ -7,8 +7,8 @@ const EditorMockup = () => {
     return (
         <div className="relative w-full h-full flex flex-col">
             <MockupHeader />
-            <div className={`flex-1 shadow-current ${mockup.classNames}`}
-            style={{ background : `url(${mockup.imageUrl})`, ...getMockupBorderRadiusStyles(mockup.type, mockup?.styles?.borderRadius),backgroundRepeat:"no-repeat",backgroundOrigin:"border-box",overflow:"hidden",backgroundPosition:"center",backgroundSize:"cover" }}
+            <div className={`flex-1`}
+            style={{ background : `url(${mockup.imageUrl})`, ...getMockupBorderRadiusStyles(mockup.type, "8px"),backgroundRepeat:"no-repeat",backgroundOrigin:"border-box",overflow:"hidden",backgroundPosition:"center",backgroundSize:"cover" }}
             ></div>
             
         </div>

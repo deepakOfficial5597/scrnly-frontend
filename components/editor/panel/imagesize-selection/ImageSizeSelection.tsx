@@ -11,13 +11,13 @@ const ImageSizeSelection = () => {
             }
         })
         setMockup((previousMockup) => {
-            const tmpSize = size === "SMALL" ? 25 : (size === "MEDIUM" ? 50 : 75)
+            const tmpSize = size === "SMALL" ? "25%" : (size === "MEDIUM" ? "50%" : "75%")
             return {
             ...previousMockup,
             styles: {
                 ...previousMockup.styles,
-                height: tmpSize + "%",
-                width: tmpSize + "%",
+                height: tmpSize,
+                width: tmpSize,
                 objectFit: "cover",
                 backgroundRepeat: "no-repeat"
             }

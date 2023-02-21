@@ -15,7 +15,8 @@ module.exports = {
         },
         background: {
           primary: colors.white,
-          secondary: colors.gray[300]
+          secondary: colors.gray[300],
+          dark: colors.gray[900]
         },
         text: {
           primary: colors.black,

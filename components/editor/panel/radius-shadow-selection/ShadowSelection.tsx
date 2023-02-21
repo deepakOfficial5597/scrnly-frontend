@@ -12,8 +12,6 @@ const ShadowSelection = () => {
         setMockup((previousMockup) => {
             const classes = previousMockup.classNames
             const classesArr = classes?.split(' ').filter(e => !e.includes("shadow"))
-            console.log(classesArr)
-            console.log(classesArr?.join(' ') +  SHADOW_CONFIG[Number(value)])
             return {
             ...previousMockup,
             classNames: classesArr?.join(' ') +  SHADOW_CONFIG[Number(value)]

@@ -57,5 +57,5 @@ export const MOCKUP_CONFIG:MockupConfig[] = [
 
 export const BACKGROUND_CONFIG = {SOLID:"SOLID", GRADIENT:"GRADIENT",NO_BACKGROUND:"NO_BACKGROUND"}
 export const IMAGE_POSITION_CONFIG = {TOP_LEFT:"Top-Left", TOP_CENTER:"Top-Center",TOP_RIGHT:"Top-Right",CENTER_LEFT:"Center-Left", CENTER_CENTER:"Center-Center",CENTER_RIGHT:"Center-Right",BOTTOM_LEFT:"Bottom-Left", BOTTOM_CENTER:"Bottom-Center",BOTTOM_RIGHT:"Bottom-Right"}
-export const SHADOW_CONFIG= ["shadow-none","shadow-sm","shadow","shadow-md","shadow-lg","shadow-xl","shadow-2xl"]
+export const SHADOW_CONFIG= ["shadow-none","shadow","shadow-md","shadow-lg"]
 export const SIZE_CONFIG=["1:1","16:9","Twitter Post","Instagram Post"]

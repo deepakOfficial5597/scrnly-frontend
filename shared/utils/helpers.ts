@@ -23,26 +23,90 @@ export function getDefaultBoxShadow():number{
     return 0;
 }
 export function getDefaultImageSize():string{
-    return "SMALL";
+    return "MEDIUM";
 }
 export function getDefaultCanvasSize():string{
     return SIZE_CONFIG[0];
 }
-export function getDefaultImagePositioningStyles():any{
-    return {
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%,-50%)" 
+
+export function getPositionStyles(value:string){
+    console.log(value)
+    switch(value){
+        case(IMAGE_POSITION_CONFIG.TOP_LEFT):
+            return {
+                position: "relative",
+                top: "8px",
+                left: "8px",
+                transform: `translate(0px,0px)`
+            }
+        case(IMAGE_POSITION_CONFIG.TOP_CENTER):
+            return {
+                top: "8px",
+                left: "50%",
+                transform: `translate(-50%,0px)`
+            }
+        case(IMAGE_POSITION_CONFIG.TOP_RIGHT):
+            return {
+                top: "8px",
+                right: "8px",
+                transform: `translate(0px,0px)`,
+            }
+        case(IMAGE_POSITION_CONFIG.CENTER_LEFT):
+            return {
+                top: "50%",
+                left: "8px",
+                transform: `translate(0px,-50%)`
+            }
+        case(IMAGE_POSITION_CONFIG.CENTER_CENTER):
+            return {
+                top: "50%",
+                left: "50%",
+                transform: `translate(-50%,-50%)`
+            }
+        case(IMAGE_POSITION_CONFIG.CENTER_RIGHT):
+            return {
+                top: "50%",
+                right: "8px",
+                transform: `translate(-8px,-50%)`
+            }
+        case(IMAGE_POSITION_CONFIG.BOTTOM_LEFT):
+            return {
+                bottom: "8px",
+                left: "8px",
+                transform: `translate(0px,-8px)`
+            }
+        case(IMAGE_POSITION_CONFIG.BOTTOM_CENTER):
+            return {
+                bottom: "8px",
+                left: "50%",
+                transform: `translate(-50%,-8px)`
+            }
+        case(IMAGE_POSITION_CONFIG.BOTTOM_RIGHT):
+            return {
+                bottom: "8px",
+                right: "8px",
+                transform: `translate(-8px,-8px)`
+            }
+        default:
+            return {
+                top: "50%",
+                left: "50%",
+                transform: `translate(-50%,-50%)`
+            }
     }
 }
-export function getPositionStyles(value:string){ return {}}
+
 export function getMockupBorderRadiusStyles(mockupHeader:MockupHeaderTypes,borderRadius:string = "8px"):any{
     if(mockupHeader === MockupHeaderTypes.NO_FRAME)
         return {
-            borderRadius
+            borderTopLeftRadius: borderRadius,
+            borderTopRightRadius: borderRadius,
+            borderBottomLeftRadius: borderRadius,
+            borderBottomRightRadius: borderRadius
         }
     return {
-        borderRadius: "none",
+        borderTopLeftRadius: "0px",
+        borderTopRightRadius: "0px",
         borderBottomLeftRadius: borderRadius,
         borderBottomRightRadius: borderRadius
     }
@@ -52,28 +116,34 @@ export function getCanvasSizeStyles(size:string){
     switch(size){
         case("1:1"):
             return {
-                height: "570px",
-                width: "570px"
+                height: "80%",
+                width: "80%"
             }
         case("16:9"):
             return {
-                height: "450px",
-                width: "800px"
+                height: "45%",
+                width: "80%"
             }
         case("Twitter Post"):
             return {
-                height: "300px",
-                width: "600px"
+                height: "80%",
+                width: "45%"
             }
         case("Instagram Post"):
             return {
                 height: "570px",
-                width: "400px"
+                width: "305px"
             }
         default:
             return {
-                height: "570px",
-                width: "570px"
+                height: "80%",
+                width: "80%"
             }
     }
+}
+
+export function removeProperty(obj:any, property:string) {  
+    const { [property]: unused, ...rest } = obj
+
+  return rest
 }

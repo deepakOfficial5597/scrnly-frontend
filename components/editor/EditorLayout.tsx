@@ -10,8 +10,8 @@ const EditorLayout = () => {
         <div className="h-screen w-screen flex flex-col">
             <EditorHeader />
             <main className="flex-1 flex flex-row gap-2 bg-background-secondary p-2">
-                <div className="flex-1 flex items-center justify-center bg-white rounded-md p-2">
-                    <div className={`rounded-md relative ${canvas.classNames} transition-all ease-linear`} style={canvas.styles} id="scrnly-canvas">
+                <div className="flex-1 flex items-center justify-center bg-white rounded-md p-2"  id="scrnly-canvas-parent">
+                    <div className={`rounded-md relative ${canvas.classNames} transition-all ease-linear`} style={canvas.styles}  id="scrnly-canvas">
                         <div className={`absolute shadow-current ${mockup.classNames}`} style={mockup.styles}>
                             <EditorMockup />
                         </div>

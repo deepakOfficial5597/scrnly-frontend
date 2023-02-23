@@ -1,6 +1,6 @@
 import EditorState from "../types/editor.state"
 import { Canvas, Mockup, MockupHeaderTypes, Panel } from "../types/shared.types"
-import { getCanvasSizeStyles, getDefaultBackgroundType, getDefaultBoxShadow, getDefaultCanvasSize, getDefaultGradient, getDefaultImagePosition, getDefaultImageSize, getDefaultMockup, getPositionStyles } from "../utils/helpers"
+import { getCanvasSizeStyles, getDefaultBackgroundType, getDefaultBorderRadius, getDefaultBoxShadow, getDefaultCanvasSize, getDefaultGradient, getDefaultImagePosition, getDefaultImageSize, getDefaultMockup, getPositionStyles } from "../utils/helpers"
 import { SHADOW_CONFIG } from "./config"
 
 export const CANVAS_INITIAL_STATE:Canvas = {
@@ -31,7 +31,10 @@ export const PANEL_INITIAL_STATE:Panel = {
     canvasSize: getDefaultCanvasSize(),
     imagePosition: getDefaultImagePosition(),
     imageSize: getDefaultImageSize(),
-    mockup: getDefaultMockup().title
+    mockup: getDefaultMockup().title,
+    radius: getDefaultBorderRadius(),
+    downloadSize: "",
+    downloadType: ""
 }
 export const EDITOR_CONTEXT_INITIAL_STATE:EditorState = {
     canvas : CANVAS_INITIAL_STATE,

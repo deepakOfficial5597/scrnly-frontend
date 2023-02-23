@@ -4,20 +4,23 @@ import { useState } from "react"
 
 const RadiusSelection = () => {
 
-    const { mockup, setMockup } = useEditor()
-    const [radius,setRadius] = useState(getDefaultBorderRadius())
+    const { mockup, setMockup, panel, setPanel } = useEditor()
 
     const changeRadius = (value:string) => {
-        setRadius(value)
+        setPanel((previousPanel) => {
+            return {
+                ...previousPanel, radius: value
+            }
+        })
         setMockup((previousMockup) => {
             return {
             ...previousMockup,
-            styles: { ...previousMockup.styles , ...getMockupBorderRadiusStyles(mockup.type, value+"px")}
+            styles: { ...previousMockup.styles , ...getMockupBorderRadiusStyles(mockup.type, value+"%")}
         }})
     }
 
     return <>
-        <input type="range" className="range accent-primary-default" value={radius} max={100} onChange={(e) => changeRadius(e.target.value)}/>
+        <input type="range" className="range accent-primary-default" value={panel.radius} max={100} onChange={(e) => changeRadius(e.target.value)}/>
     </>
 }
 

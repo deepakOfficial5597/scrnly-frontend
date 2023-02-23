@@ -20,7 +20,8 @@ module.exports = {
         },
         text: {
           primary: colors.black,
-          customgray: colors.gray[600]
+          customgray: colors.gray[600],
+          secondary: colors.white
         },
         border:{
           light: colors.gray[500],
@@ -30,5 +31,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }

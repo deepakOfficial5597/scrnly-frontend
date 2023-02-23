@@ -15,7 +15,10 @@ export interface Panel {
     canvasSize: string,
     imagePosition: string,
     mockup: string,
-    imageSize: string
+    imageSize: string,
+    radius: string,
+    downloadType: string,
+    downloadSize: string
 }
 export interface GradientConfig {
     title: string,

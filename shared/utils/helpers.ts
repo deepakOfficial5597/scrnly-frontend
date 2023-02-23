@@ -17,7 +17,7 @@ export function getDefaultImagePosition():string{
     return IMAGE_POSITION_CONFIG.CENTER_CENTER;
 }
 export function getDefaultBorderRadius():string{
-    return "8";
+    return "2";
 }
 export function getDefaultBoxShadow():number{
     return 0;
@@ -30,7 +30,6 @@ export function getDefaultCanvasSize():string{
 }
 
 export function getPositionStyles(value:string){
-    console.log(value)
     switch(value){
         case(IMAGE_POSITION_CONFIG.TOP_LEFT):
             return {
@@ -116,18 +115,18 @@ export function getCanvasSizeStyles(size:string){
     switch(size){
         case("1:1"):
             return {
-                height: "80%",
-                width: "80%"
+                height: "570px",
+                width: "570px"
             }
         case("16:9"):
             return {
-                height: "45%",
-                width: "80%"
+                height: "385px",
+                width: "680px"
             }
         case("Twitter Post"):
             return {
-                height: "80%",
-                width: "45%"
+                height: "50%",
+                width: "60%"
             }
         case("Instagram Post"):
             return {
@@ -136,8 +135,8 @@ export function getCanvasSizeStyles(size:string){
             }
         default:
             return {
-                height: "80%",
-                width: "80%"
+                height: "570px",
+                width: "570px"
             }
     }
 }

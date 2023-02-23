@@ -33,8 +33,8 @@ export const PANEL_INITIAL_STATE:Panel = {
     imageSize: getDefaultImageSize(),
     mockup: getDefaultMockup().title,
     radius: getDefaultBorderRadius(),
-    downloadSize: "",
-    downloadType: ""
+    downloadSize: "1",
+    downloadType: "PNG"
 }
 export const EDITOR_CONTEXT_INITIAL_STATE:EditorState = {
     canvas : CANVAS_INITIAL_STATE,

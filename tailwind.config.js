@@ -28,6 +28,9 @@ module.exports = {
           dark: colors.gray[900],
           primary: colors.indigo[900]
         }
+      },
+      backgroundImage: {
+        'demo-screenshot': "url('/assets/demo-screenshot.png')"
       }
     },
   },
